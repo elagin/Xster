@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+    defaultConfig {
+        applicationId "com.mototime.motobat"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 6
+        versionName "0.6"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile('com.twitter.sdk.android:twitter:1.11.0@aar') {
+        transitive = true;
+    }
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.google.api.client:google-api-client-auth-oauth:1.2.3-alpha'
+    compile 'com.google.api.client:google-api-client-apache:1.2.3-alpha'
+}

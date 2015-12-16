@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Xster</string>
+    <string name="title_activity_oauth_access_token">OAuthAccessTokenActivity</string>
+    <string name="chars_left">"Осталось %d символов."</string>
+    <string name="send_request">Сформирован запрос.</string>
+    <string name="sended_to_twiter">Отправленно в Твиттер</string>
+    <string name="recived_from_twiter">Получено из Твиттера</string>
+    <string name="unknow_answer">Не известный ответ сервера.</string>
+</resources>
