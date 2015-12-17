@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
@@ -35,7 +36,7 @@ public class HTTPClient {
     protected String method;
 
     protected Context context;
-    protected Map<String, String> post;
+    protected Map<String, String> post = new HashMap<>();
 
     private String getAuthHdr() {
         String res2 = String.format("%s oauth_consumer_key=\"%s\", oauth_nonce=\"%s\", ", Constants.OAUTH, Constants.OAUTH_CONSUMER_KEY, Constants.OAUTH_NONCE) +
@@ -69,8 +70,10 @@ public class HTTPClient {
             connection.setRequestProperty("Accept-Encoding", "gzip");
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + CHARSET);
             connection.setRequestProperty("Content-Language", "ru-RU");
-            connection.setRequestProperty("Authorization", getAuthHdr());
-            //connection.setRequestProperty("Authorization", "OAuth oauth_consumer_key=\"IJ0r4TNnCDmX3Gf32KENCwmfu\", oauth_nonce=\"b68174be0bdfdd283b46101f133aa36d\", oauth_signature=\"iKF64GLO31J4%2BQBLVaYxWavabmw%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"1450104989\", oauth_token=\"4452517714-NUYwuyOZFU5nENwhGq5MktFEVOOeAfN5cYvloBs\"");
+            String authorizationHeader = OAuthAuthorization.generateAuthorizationHeader(method, url.toString(), post, Constants.OAUTH_TOKEN);
+            //connection.setRequestProperty("Authorization", authorizationHeader);
+
+            connection.setRequestProperty("Authorization", "OAuth oauth_consumer_key=\"IJ0r4TNnCDmX3Gf32KENCwmfu\", oauth_nonce=\"b68174be0bdfdd283b46101f133aa36d\", oauth_signature=\"iKF64GLO31J4%2BQBLVaYxWavabmw%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"1450104989\", oauth_token=\"4452517714-NUYwuyOZFU5nENwhGq5MktFEVOOeAfN5cYvloBs\"");
             connection.setUseCaches(false);
             if (post != null && !post.isEmpty()) {
                 String POST = makePOST(post);

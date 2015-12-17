@@ -18,6 +18,7 @@ public class Constants {
 
     public static final String	OAUTH = "OAuth";
     public static final String	OAUTH_CONSUMER_KEY = "X3IKNueKoo09J4DyZIOpiWNLo";
+    public static final String	OAUTH_CONSUMER_SECRET = "sOt7PtI9zD83q0ihR0lzvdM1wqdCC9H36BZMHGPZn4viPVaG9J";
     public static final String	OAUTH_NONCE = "66e86cb1e8facf120f1dd66776d47d5d";
     public static final String	OAUTH_SIGNATURE = "6lbbbhR6Yp1mMnAu8gGsowNW2KM%3D";
     public static final String	OAUTH_SIGNATURE_METHOD = "HMAC-SHA1";
